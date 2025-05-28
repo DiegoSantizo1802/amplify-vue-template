@@ -2,5 +2,5 @@
 $host = 'localhost';
 $usuario = 'root';
 $password = 'rootroot';
-$base_datos = 'eventosapp';
+$base_datos = 'eventos';
 ?>

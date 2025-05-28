@@ -9,7 +9,7 @@ if ($conexion->connect_error) {
 }
 
 // Consulta para obtener todos los eventos
-$sql = "SELECT id, nombre, fecha, tipoevento FROM eventos ORDER BY fecha DESC";
+$sql = "SELECT id, nombre, fecha, tipo_evento FROM eventos ORDER BY fecha DESC";
 $resultado = $conexion->query($sql);
 ?>
 
@@ -24,23 +24,68 @@ $resultado = $conexion->query($sql);
     <style>
         body {
             background-color: #f4f4f4;
-            padding: 20px;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         .table-container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
+
+        h2 {
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+
+        .table thead th {
+            text-align: center;
+        }
+
+        .table tbody td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
         .action-icons a {
-            margin-right: 10px;
-            text-decoration: none;
+            margin: 0 5px;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
         }
+
+        .action-icons a:hover {
+            transform: scale(1.2);
+        }
+
         .edit-icon {
             color: #28a745;
         }
+
         .delete-icon {
             color: #dc3545;
+        }
+
+        .btn-primary {
+            background-color: #133980;
+            border-color: #133980;
+        }
+
+        .btn-primary:hover {
+            background-color: #0f2e66;
+            border-color: #0f2e66;
+        }
+
+        .text-center a.btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 6px;
         }
     </style>
 </head>
@@ -59,13 +104,9 @@ $resultado = $conexion->query($sql);
                 </thead>
                 <tbody>
                     <?php 
-                    // Verificar si hay eventos
                     if ($resultado->num_rows > 0) {
-                        // Mostrar cada evento en una fila
                         while($evento = $resultado->fetch_assoc()) {
-                            // Formatear la fecha
                             $fecha_formateada = date("d/m/Y", strtotime($evento['fecha']));
-                            
                             echo "<tr>";
                             echo "<td>" . htmlspecialchars($evento['nombre']) . "</td>";
                             echo "<td>" . $fecha_formateada . "</td>";
@@ -73,7 +114,11 @@ $resultado = $conexion->query($sql);
                             echo "<td class='action-icons'>";
                             echo "<a href='editar_evento.php?id=" . $evento['id'] . "' class='edit-icon'><i class='bi bi-pencil-square'></i></a>";
                             echo "<a href='ver_evento.php?id=" . $evento['id'] . "' class='edit-icon'><i class='bi bi-check-square'></i></a>";
+                            echo "<a href='./index.php?id=" . $evento['id'] . "' class='invite-icon' title='Ver invitados'><i class='bi bi-people'></i></a>";
                             echo "<a href='eliminar_evento.php?id=" . $evento['id'] . "' class='delete-icon' onclick='return confirm(\"¿Estás seguro de eliminar este evento?\")'><i class='bi bi-trash'></i></a>";
+                            echo "<a href='ses.php?id=" . $evento['id'] . "' class='delete-icon' ><i class='bi bi-mailbox'></i></a>";
+                            echo "<a href='confirmacion.php?id=" . $evento['id'] . "' class='delete-icon' ><i class='bi bi-patch-check-fill'></i></a>";
+                            
                             echo "</td>";
                             echo "</tr>";
                         }
@@ -83,7 +128,7 @@ $resultado = $conexion->query($sql);
                     ?>
                 </tbody>
             </table>
-            <div class="text-center mt-3">
+            <div class="text-center mt-4">
                 <a href="index.html" class="btn btn-primary">Registrar Nuevo Evento</a>
             </div>
         </div>
@@ -94,6 +139,5 @@ $resultado = $conexion->query($sql);
 </html>
 
 <?php
-// Cerrar conexión
 $conexion->close();
 ?>

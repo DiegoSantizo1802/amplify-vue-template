@@ -1,45 +1,139 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> <!-- Documento HTML con idioma español -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Eventos</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8"> <!-- Codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Diseño responsive para móviles -->
+    <title>Registro de Eventos</title> <!-- Título de la pestaña del navegador -->
+    
+    <!-- Estilos embebidos -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f4f7f8, #dbe9f4);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            padding: 40px 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1e3a5f;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1e3a5f;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            transition: border 0.3s ease, background 0.3s ease;
+            font-size: 15px;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #1e3a5f;
+            background-color: #fff;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #1e3a5f;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #305a8b;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container"> <!-- Contenedor principal -->
         <h1>Registro de Eventos</h1>
+
+        <!-- Formulario que envía datos a guardar_evento.php por método POST -->
         <form action="guardar_evento.php" method="POST">
+
+            <!-- Campo: Nombre del Evento -->
             <div class="form-group">
                 <label for="nombre_evento">Nombre del Evento:</label>
                 <input type="text" id="nombre_evento" name="nombre_evento" required>
             </div>
 
+            <!-- Campo: Descripción -->
             <div class="form-group">
                 <label for="descripcion_evento">Descripción del Evento:</label>
                 <textarea id="descripcion_evento" name="descripcion_evento" required></textarea>
             </div>
 
+            <!-- Campo: Fecha -->
             <div class="form-group">
                 <label for="fecha_evento">Fecha del Evento:</label>
                 <input type="date" id="fecha_evento" name="fecha_evento" required>
             </div>
 
+            <!-- Campo: Ubicación (ciudad, edificio, etc.) -->
             <div class="form-group">
                 <label for="ubicacion">Ubicación:</label>
                 <input type="text" id="ubicacion" name="ubicacion" required>
             </div>
 
+            <!-- Campo: Dirección específica -->
             <div class="form-group">
                 <label for="direccion">Dirección:</label>
                 <input type="text" id="direccion" name="direccion" required>
             </div>
 
+            <!-- Campo: Cantidad de invitados esperados -->
             <div class="form-group">
                 <label for="cantidad_invitados">Cantidad de Invitados:</label>
                 <input type="number" id="cantidad_invitados" name="cantidad_invitados" min="1" required>
             </div>
 
+            <!-- Campo: Tipo de evento (categoría) -->
             <div class="form-group">
                 <label for="tipo_evento">Tipo de Evento:</label>
                 <select id="tipo_evento" name="tipo_evento" required>
@@ -52,6 +146,7 @@
                 </select>
             </div>
 
+            <!-- Botón para enviar el formulario -->
             <div class="form-group">
                 <button type="submit">Registrar Evento</button>
             </div>

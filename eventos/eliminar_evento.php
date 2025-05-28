@@ -22,16 +22,16 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     // Ejecutar eliminación
     if ($stmt->execute()) {
         // Redirigir con mensaje de éxito
-        header("Location: listar_eventos.php?mensaje=eliminado");
+        header("Location: lista_eventos.php?mensaje=eliminado");
         exit();
     } else {
         // Redirigir con mensaje de error
-        header("Location: listar_eventos.php?error=no_eliminado");
+        header("Location: lista_eventos.php?error=no_eliminado");
         exit();
     }
 } else {
     // ID inválido
-    header("Location: listar_eventos.php?error=id_invalido");
+    header("Location: lista_eventos.php?error=id_invalido");
     exit();
 }
 

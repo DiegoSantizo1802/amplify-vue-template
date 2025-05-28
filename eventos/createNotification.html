@@ -126,52 +126,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>Registro de Eventos</h1>
+        <h1>Creación de Notificación</h1>
         <form action="guardar_evento.php" method="POST" novalidate>
             <div class="form-group">
-                <label for="nombre_evento">Nombre del Evento:</label>
+                <label for="nombre_evento">Asunto:</label>
                 <input type="text" id="nombre_evento" name="nombre_evento" required>
             </div>
 
             <div class="form-group">
-                <label for="descripcion_evento">Descripción del Evento:</label>
+                <label for="descripcion_evento">Cuerpo del mensaje:</label>
                 <textarea id="descripcion_evento" name="descripcion_evento" required></textarea>
             </div>
 
-            <div class="form-group">
-                <label for="fecha_evento">Fecha del Evento:</label>
-                <input type="date" id="fecha_evento" name="fecha_evento" required>
             </div>
 
             <div class="form-group">
-                <label for="ubicacion">Ubicación:</label>
-                <input type="text" id="ubicacion" name="ubicacion" required>
-            </div>
-
-            <div class="form-group">
-                <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" name="direccion" required>
-            </div>
-
-            <div class="form-group">
-                <label for="cantidad_invitados">Cantidad de Invitados:</label>
-                <input type="number" id="cantidad_invitados" name="cantidad_invitados" min="1" required>
-            </div>
-
-            <div class="form-group">
-                <label for="tipo_evento">Tipo de Evento:</label>
-                <select id="tipo_evento" name="tipo_evento" required>
-                    <option value="">Seleccionar tipo de evento</option>
-                    <option value="corporativo">Corporativo</option>
-                    <option value="social">Social</option>
-                    <option value="academico">Académico</option>
-                    <option value="cultural">Cultural</option>
-                    <option value="deportivo">Deportivo</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <button type="submit">Registrar Evento</button>
+                <button type="submit">Guardar</button>
             </div>
         </form>
     </div>

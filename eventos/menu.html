@@ -83,7 +83,17 @@
             transition: border 0.3s ease, background 0.3s ease;
             font-size: 15px;
         }
-
+        
+        .btn {
+            padding: 1em;
+            background-color: #67c7f4;
+            border-radius: 0.5em;
+            color: black;
+            text-decoration: auto;
+            margin: 1em 1em;
+            margin-top: 2em;
+        }
+        
         input:focus,
         select:focus {
             border-color: #1e3a5f;
@@ -126,54 +136,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Registro de Eventos</h1>
-        <form action="guardar_evento.php" method="POST" novalidate>
-            <div class="form-group">
-                <label for="nombre_evento">Nombre del Evento:</label>
-                <input type="text" id="nombre_evento" name="nombre_evento" required>
-            </div>
-
-            <div class="form-group">
-                <label for="descripcion_evento">Descripción del Evento:</label>
-                <textarea id="descripcion_evento" name="descripcion_evento" required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="fecha_evento">Fecha del Evento:</label>
-                <input type="date" id="fecha_evento" name="fecha_evento" required>
-            </div>
-
-            <div class="form-group">
-                <label for="ubicacion">Ubicación:</label>
-                <input type="text" id="ubicacion" name="ubicacion" required>
-            </div>
-
-            <div class="form-group">
-                <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" name="direccion" required>
-            </div>
-
-            <div class="form-group">
-                <label for="cantidad_invitados">Cantidad de Invitados:</label>
-                <input type="number" id="cantidad_invitados" name="cantidad_invitados" min="1" required>
-            </div>
-
-            <div class="form-group">
-                <label for="tipo_evento">Tipo de Evento:</label>
-                <select id="tipo_evento" name="tipo_evento" required>
-                    <option value="">Seleccionar tipo de evento</option>
-                    <option value="corporativo">Corporativo</option>
-                    <option value="social">Social</option>
-                    <option value="academico">Académico</option>
-                    <option value="cultural">Cultural</option>
-                    <option value="deportivo">Deportivo</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <button type="submit">Registrar Evento</button>
-            </div>
-        </form>
+        <h1>Menu</h1>
+       <a class="btn btn-primary" href="https://crea2espacio.com/eventos_new/lista_eventos.php">Mantenimientos de eventos</a><br><br><br>
+       <a class="btn btn-primary" href="https://crea2espacio.com/eventos_new/index.php">Mantenimientos de Invitados</a><br><br><br>
+       <a class="btn btn-primary" href="https://crea2espacio.com/eventos_new/createNotification.html">Mantenimientos de notificaciones</a><br><br><br><br>
+       <a class="btn btn-primary" href="https://crea2espacio.com/eventos_new/dashboard.php">Reportes / Dashboards</a><br><br><br><br>
+       
+       
+       
     </div>
 </body>
 </html>

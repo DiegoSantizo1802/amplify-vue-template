@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Subir Lista de Invitados</title>
+  <style>
+    :root {
+      --azul-oscuro: #133980;
+      --gris-fondo: #f7f7f7;
+      --blanco: #ffffff;
+      --verde: #28a745;
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      background-color: var(--gris-fondo);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h1 {
+      color: var(--azul-oscuro);
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .container {
+      background-color: var(--blanco);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: floatIn 0.6s ease;
+    }
+
+    .info {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+      background-color: #fff;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: var(--azul-oscuro);
+      color: var(--blanco);
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0f2f6b;
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .csv-example {
+      margin-top: 20px;
+      text-align: left;
+      font-size: 14px;
+      background-color: #f0f4ff;
+      border-left: 4px solid var(--azul-oscuro);
+      padding: 12px;
+      border-radius: 6px;
+      animation: slideUp 0.6s ease;
+    }
+
+    .btn-regresar {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: var(--azul-oscuro);
+      border: 2px solid var(--azul-oscuro);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .btn-regresar:hover {
+      background-color: var(--azul-oscuro);
+      color: var(--blanco);
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(19, 57, 128, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(19, 57, 128, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(19, 57, 128, 0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Cargar Lista de Invitados</h1>
+
+  <div class="container">
+    <p class="info">Selecciona un archivo <strong>.CSV</strong> desde tu computadora con los datos de los invitados.</p>
+    
+    <form action="./procesar_csv.php" method="POST" enctype="multipart/form-data">
+      <input type="file" name="csv_file" accept=".csv" required>
+      <input type="submit" value="Subir CSV">
+      <input type="text" name="id_evento" id="id_evento" hidden>
+    </form>
+
+    <a href="./index.php" class="btn-regresar">← Regresar a la Lista</a>
+
+    <div class="csv-example">
+      <strong>Formato esperado del archivo:</strong><br>
+      <code>nombre,correo,celular</code><br>
+      <code>Juan Pérez,juan@example.com,5551234567</code><br>
+      <code>Ana López,ana@example.com,5559876543</code>
+    </div>
+  </div>
+  <script>
+let params = new URLSearchParams(document.location.search);
+let name = params.get("id");
+document.getElementById("id_evento").value = name;
+  </script>
+</body>
+</html>
